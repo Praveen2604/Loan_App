@@ -1,1 +1,10 @@
-<p>rooms works!</p>
+<h1 [ngClass]="'text-danger'">Component Intraction</h1>
+<div>
+    <h1>parent container (comp 1)</h1>
+    <div>
+        <button [ngClass]="'btn btn-danger'" (click)="decreasecount()">decrement</button>
+        <span>{{count}}</span>
+        <button [ngClass]="'btn btn-success'"  (click)="increasecount()">Icrement</button>
+    </div>
+    <app-room1 [valuefromparent]="count"></app-room1>
+</div>

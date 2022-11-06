@@ -5,12 +5,18 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.css']
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent  {
 
-  constructor() { }
-
-  ngOnInit(): void {
+count=0;
+increasecount(){
+  this.count++;
+  if(this.count==10) alert("limit exeet");
   }
+
+decreasecount(){
+this.count--;
+}
+
 
 
 }

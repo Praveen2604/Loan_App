@@ -1,4 +1,4 @@
-<h1>Data bindings</h1>
+<!-- <h1>Data bindings</h1>
 
         <input type="text" value="{{count}}"> <!--interpolatio one way data binding-->
 
@@ -15,12 +15,13 @@
 
 <h1>structural directive ngFor and ngIf </h1> <!--ngFor-->
 <div *ngIf="showusers">  <!--ngIf-->
-    <div *ngFor="let user of users; let i=index;let l=last;let odd=odd;let ev=even">
+    <div *ngFor="let user of users;trackBy:userid; let i=index;let l=last;let odd=odd;let ev=even">
         <button [ngStyle]="{'color':ev?'red':'blue'}" (click)="selecteduser=user.name">{{i+1}} {{user.name}}</button>
     </div>
     <!-- <button *ngFor="let user of users; let i=index" [ngClass]="{'event':i==0}" (click)="selecteduser=user.name">{{user.name}}</button> -->
 </div>
 
+<button (click)="getusers()">Track by</button>
 
 <h2>ngSwitch Case</h2>   
 <div [ngSwitch]="selecteduser">
@@ -35,10 +36,51 @@
 <h1 [ngStyle]="{'color':'blue'}">ngStyle</h1>
 
 
+<h1>ngIf</h1>
+<button (click)="showelements=!showelements">Togle Button</button>
+<h1 *ngIf="showelements;then thanblock; else praveen">Show elements</h1> <!--if condition when add then block this h1 is not render-->
+<!-- <h1 [hidden]="showelements">hidden elements</h1> -->
+
+<ng-template #thanblock><!--else if statement-->
+    <h1>then block</h1>
+</ng-template>
+
+<ng-template #praveen> <!--else statement-->
+    <h1>else block</h1>
+</ng-template>
 
 
 
+<h1 [ngStyle]="{'color':'green'}">Angular pipe</h1>
+<h2>date pipe</h2>
+<div>{{today}}</div>
+<div>{{today | date: 'dd-mm-yyyy'}}</div> <!--date pipe-->
 
+<h2>String pipe</h2>
+<div>{{myname}}</div>
+<div>{{myname | lowercase}}</div>
+<div>{{myname | uppercase}}</div>
 
+<h2>number pipe</h2>
+<div>{{mobilenumber}}</div>
+<div>{{mobilenumber | number:'6.4-6'}}</div>
+
+<h2>percent pipe</h2>
+<div>{{mobilenumber}}</div>
+<div>{{mobilenumber | percent}}</div>
+
+<h2>Currency pipe</h2>
+<div>{{currency}}</div>
+<div>{{currency|currency}}</div>
+<div>{{currency|currency:'INR'}}</div> 
+<div>{{currency|currency:'INR':'code'}}</div>
+<div>{{currency|currency:'CAD':'symbol'}}</div> -->
+
+<h1 [ngStyle]="{'color':'Orange'}">Create Custom Angular Pipes</h1>
+<h2>Animals List</h2>
+<input type="text" [(ngModel)]="animalname" placeholder="enter animal name">
+<ul>
+    <li *ngFor="let animal of animals | searchfilter : animalname">{{animal}}</li>
+</ul>
 
 
